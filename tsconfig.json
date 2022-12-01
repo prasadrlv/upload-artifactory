@@ -1,0 +1,22 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "esModuleInterop": true,
+    "lib": ["es6"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "outDir": "./dist/out-tsc",
+    "rootDir": ".",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
+    "types": ["jest", "node"]
+  },
+  "include": ["src/**/*.ts","./*.js","*.json"],
+  "exclude": ["node_modules", "dist"]
+}
+
+
