@@ -3,7 +3,6 @@ import * as core from '@actions/core';
 import fetch from 'node-fetch';
 import path from 'path';
 import fs from 'fs';
-import FormData = require('form-data');
 
 export const uploadArtifactory = async (
   url: string,
@@ -11,15 +10,12 @@ export const uploadArtifactory = async (
   filePath: string,
 ) => {
   try {
-    const formData = new FormData();
     const basename = path.basename(filePath);
-
-    formData.append(basename, fs.readFileSync(filePath));
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const response = await fetch(path.join(url, basename), {
       method: 'PUT',
-      body: formData,
+      body: fs.createReadStream(filePath),
       headers: {
         'X-JFrog-Art-Api': token,
       },

@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
+import * as core from '@actions/core';
 import fs from 'fs';
 import path from 'path';
 import archiver from 'archiver';
@@ -17,9 +18,10 @@ export const archiveTheFiles = (
       zlib: { level: 9 }, // Sets the compression level.
     });
     output.on('close', () => {
-      console.log(archive.pointer() + ' total bytes');
-      console.log(
-        `archiver has been finalized and the output file ${archiveFilePath} descriptor has closed.`,
+      core.info(
+        `archiver has been finalized and the output file ${archiveFilePath}: ${String(
+          archive.pointer(),
+        )} total bytes `,
       );
       resolve(archiveFilePath);
     });

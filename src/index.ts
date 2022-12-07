@@ -12,7 +12,6 @@ async function run(): Promise<void> {
   try {
     const inputs = getInputs();
     const searchResult = await findFilesToUpload(inputs.searchPath);
-    console.log('searchResult', searchResult?.filesToUpload);
 
     if (searchResult?.filesToUpload?.length === 0) {
       const message = `No files were found with the provided path: ${inputs.searchPath}. No artifacts will be uploaded.`;
@@ -38,7 +37,6 @@ async function run(): Promise<void> {
         const archivedFilePath = `${__dirname}/${inputs.artifactName}`;
 
         await archiveTheFiles(archivedFilePath, searchResult?.filesToUpload);
-        console.log('archivedFilePath ', archivedFilePath);
         await uploadArtifactory(
           inputs.artifactoryUrl,
           inputs.artifactoryKey,
