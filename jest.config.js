@@ -11,7 +11,6 @@ module.exports = {
   },
   rootDir: '.',
   coverageReporters: ['lcov', 'text'],
-
   coverageDirectory: './coverage/',
   restoreMocks: true,
   resetMocks: true,

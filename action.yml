@@ -21,6 +21,10 @@ inputs:
       Duration after which artifact will expire in days. 0 means using default retention.
       Minimum 1 day.
       Maximum 90 days unless changed from the repository settings page.
+  artifactoryUrl:
+    description: 'The URL for your Artifactory instance'
+  artifactoryKey:
+    description: 'The Artifactory API key' 
 runs:
   using: 'node16'
   main: 'dist/index.js'
